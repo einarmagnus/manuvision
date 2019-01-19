@@ -150,14 +150,15 @@ async function main(action: Action = Action.subscribe) {
         return;
     }
     if (/^\s*(\d+)\s*$/.test(hold)) {
-        console.log("Retrieving all items created in the last 3 years...");
-        const items = await getAllItems();
+        alert("Will now retrieve all items created in the last 3 years. It will take some time...");
+        const itemsPromise = getAllItems();
+        const items = await itemsPromise;
         try {
             let subscribeTo = filterForHold(items, +hold).sort((a, b) => a < b ? -1 : a > b ? 1 : 0);
-            console.log("Found " + subscribeTo.length + " items:");
+            let foundItemsString = "";
             for (let item of subscribeTo)
-                console.log("  " + item.toString());
-            if (confirm(`Found ${subscribeTo.length} items listed in console, do you wish to ${Action[action]} them all?`)) {
+                foundItemsString += " ∙" + item.toString() + "\n";
+            if (confirm(`Found ${subscribeTo.length} items listed below, do you wish to ${Action[action]} them all?\n` + foundItemsString)) {
                 let result = await Promise.all(subscribeTo.map(item =>
                     action == Action.subscribe
                         ? item.subscribe()
@@ -173,7 +174,7 @@ async function main(action: Action = Action.subscribe) {
                         console.error(`⚠️ ${r.status} (${item.toString()})`, r, item)
                     }
                 }
-                alert(`You were ${Action[action]}d to ${subscribeTo.length} items referencing hold ${hold}:`);
+                alert(`You were ${Action[action]}d to ${subscribeTo.length} items referencing hold ${hold}`);
             }
         } catch (e) {
             alert("Something went wrong with some subscription :( ");

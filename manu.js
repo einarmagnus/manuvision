@@ -119,14 +119,15 @@ async function main(action = Action.subscribe) {
         return;
     }
     if (/^\s*(\d+)\s*$/.test(hold)) {
-        console.log("Retrieving all items created in the last 3 years...");
-        const items = await getAllItems();
+        const itemsPromise = getAllItems();
+        alert("Retrieving all items created in the last 3 years. It may take some time...");
+        const items = await itemsPromise;
         try {
             let subscribeTo = filterForHold(items, +hold).sort((a, b) => a < b ? -1 : a > b ? 1 : 0);
-            console.log("Found " + subscribeTo.length + " items:");
+            let foundItemsString = "";
             for (let item of subscribeTo)
-                console.log("  " + item.toString());
-            if (confirm(`Found ${subscribeTo.length} items listed in console, do you wish to ${Action[action]} them all?`)) {
+                foundItemsString += " ∙" + item.toString() + "\n";
+            if (confirm(`Found ${subscribeTo.length} items listed below, do you wish to ${Action[action]} them all?\n` + foundItemsString)) {
                 let result = await Promise.all(subscribeTo.map(item => action == Action.subscribe
                     ? item.subscribe()
                     : item.unsubscribe()));
