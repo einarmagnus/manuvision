@@ -185,3 +185,5 @@ async function main(action: Action = Action.subscribe) {
         }
     }
 }
+
+main();

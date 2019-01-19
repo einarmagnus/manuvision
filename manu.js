@@ -110,6 +110,10 @@ var Action;
     Action[Action["unsubscribe"] = 1] = "unsubscribe";
 })(Action || (Action = {}));
 async function main(action = Action.subscribe) {
+    if (location.host !== "podio.com") {
+        alert("This only works on Podio, you need to bookmark it to use it");
+        return;
+    }
     const hold = prompt("Please enter the number of your 'hold':");
     if (hold === null) {
         return;
@@ -151,3 +155,4 @@ async function main(action = Action.subscribe) {
         }
     }
 }
+main();
