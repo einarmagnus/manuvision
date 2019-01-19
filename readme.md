@@ -2,13 +2,13 @@
 
 I found it frustrating that the calendar events are published to everyone and that I can't make an exported calendar with only events for my class.
 
-![](https://i.imgur.com/Mta3KpN.gif)
+![](cal.gif?raw=true)
 
 I understand why it is like that (so that older students can attend our classes) and so I decided to make a fix.
 
 To subscribe to all events for hold 16 I'd have to go through all calendar items related to hold 16 and click subscribe on them. I am not a big fan of clicking things so I made a script that does it for me. I wrote it to be general enough that anyone on any class can use it.
 
-![](https://i.imgur.com/LnzzZLS.gif)
+![](script.gif?raw=true)
 
 ## Instructions:
 
