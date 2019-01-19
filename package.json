@@ -1,0 +1,11 @@
+{
+  "name": "manuvision",
+  "version": "1.0.0",
+  "description": "I found it frustrating that the calendar events are published to everyone and that I can't make an exported calendar with only events for my class.",
+  "scripts": {
+    "make": "tsc --build",
+    "watch": "tsc --build --watch"
+  },
+  "author": "Einar Boson <einar.boson@gmail.com>",
+  "license": "ISC"
+}
