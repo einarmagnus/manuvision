@@ -14,7 +14,20 @@ To subscribe to all events for hold 16 I'd have to go through all calendar items
 
 For this to work you may have to use a recent edition of Firefox or Chrome. I have not tested it in Safari or Edge. It will definetely not work in Internet Explorer.
 
-Go to https://gist.github.com/einarmagnus/c2de6abc3e04e2033b080d06857bf99a and copy the code.
+The simplest way is to right-click on this link: <a href='javascript:(function() {if (window.location.host !== "podio.com"){alert("This link should be bookmarked and then run on Podio")} else {let s = document.createElement("script");s.src="https://cdn.jsdelivr.net/gh/einarmagnus/manuvision@latest/manu.js";document.head.appendChild(s);}})();'>ManuVision -- subscribe to hold</a> and choose to bookmark it.
+If it is not a link, please access this page through this url instead: https://einarmagnus.github.io/manuvision/
+
+Then, when you're on the podio web site, you click on your bookmark and the script will be run.
+
+If you don't want to use a bookmark there is another way:
+
+copy this code:
+
+```javascript
+document.createElement("script");
+s.src="https://cdn.jsdelivr.net/gh/einarmagnus/manuvision@latest/manu.js";
+document.head.appendChild(s);
+```
 
 Open podio and log in.
 
