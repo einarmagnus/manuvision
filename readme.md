@@ -20,8 +20,8 @@ If you don't want to use a bookmark, or you are using chrome, there is another w
 copy this code:
 
 ```javascript
-document.createElement("script");
-s.src="https://cdn.jsdelivr.net/gh/einarmagnus/manuvision/manuvision.js";
+let s = document.createElement("script");
+s.src = "https://cdn.jsdelivr.net/gh/einarmagnus/manuvision/manuvision.js";
 document.head.appendChild(s);
 ```
 
