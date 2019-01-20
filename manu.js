@@ -119,8 +119,8 @@ async function main(action = Action.subscribe) {
         return;
     }
     if (/^\s*(\d+)\s*$/.test(hold)) {
+        alert("Will now retrieve all items created in the last 3 years. It will take some time...");
         const itemsPromise = getAllItems();
-        alert("Retrieving all items created in the last 3 years. It may take some time...");
         const items = await itemsPromise;
         try {
             let subscribeTo = filterForHold(items, +hold).sort((a, b) => a < b ? -1 : a > b ? 1 : 0);
@@ -142,7 +142,7 @@ async function main(action = Action.subscribe) {
                         console.error(`⚠️ ${r.status} (${item.toString()})`, r, item);
                     }
                 }
-                alert(`You were ${Action[action]}d to ${subscribeTo.length} items referencing hold ${hold}:`);
+                alert(`You were ${Action[action]}d to ${subscribeTo.length} items referencing hold ${hold}`);
             }
         }
         catch (e) {
