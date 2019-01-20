@@ -10,7 +10,7 @@ To subscribe to all events for hold 16 I'd have to go through all calendar items
 
 For this to work you may have to use a recent edition of Firefox or Chrome. I have not tested it in Safari or Edge. It will definetely not work in Internet Explorer.
 
-The simplest way if you use Firefox is to right-click on this link: <a href='javascript:(function() {if (window.location.host !== "podio.com"){alert("This link should be bookmarked and then run on Podio")} else {if (typeof(main) !== "undefined") { main(); return };let s = document.createElement("script");s.src="https://cdn.jsdelivr.net/gh/einarmagnus/manuvision@latest/manu.js";document.head.appendChild(s);}})();'>ManuVision -- subscribe to hold</a> and choose to bookmark it.
+The simplest way if you use Firefox is to right-click on this link: <a href='javascript:(function() {if (window.location.host !== "podio.com"){alert("This link should be bookmarked and then run on Podio")} else {if (typeof(main) !== "undefined") { main(); return };let s = document.createElement("script");s.src="https://cdn.jsdelivr.net/gh/einarmagnus/manuvision/manuvision.js";document.head.appendChild(s);}})();'>ManuVision -- subscribe to hold</a> and choose to bookmark it.
 If it is not a link, please access this page through this url instead: https://einarmagnus.github.io/manuvision/
 
 Then, when you're on the podio web site, you click on your bookmark and the script will be run.
@@ -21,7 +21,7 @@ copy this code:
 
 ```javascript
 document.createElement("script");
-s.src="https://cdn.jsdelivr.net/gh/einarmagnus/manuvision@latest/manu.js";
+s.src="https://cdn.jsdelivr.net/gh/einarmagnus/manuvision/manuvision.js";
 document.head.appendChild(s);
 ```
 
