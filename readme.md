@@ -32,3 +32,11 @@ Click anywhere in the website and choose "Inspect" or "Inspect Element" or somet
 In the new window section that appears you should select the tab "Console" and then paste the code there and press the return key (also called Enter).
 
 Then just enter the number of your class and the script should do the rest.
+
+## Demonstration in Firefox:
+
+![](bookmark.gif?raw=true)
+
+## Demonstration in Chrome:
+
+![](copypaste.gif?raw=true)
