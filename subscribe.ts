@@ -1,15 +1,11 @@
 
 let csrfToken : string;
-async function csrf() {
-    if (csrfToken === undefined) {
-        const mainPage = await (await fetch("/")).text();
-        const csrf = /csrfToken&quot;:&quot;([^&]+)/.exec(mainPage)
-        if (csrf === null) {
-            throw new Error("Could not extract csrf-token");
-        }
-        csrfToken = csrf[1];
-    }
-    return csrfToken;
+async function csrf(): Promise<string> {
+    return new Promise(acc => {
+        require(["lib/Podio.Config"], (podioConfig: {authenticity_token: () => string}) => {
+            acc(podioConfig.authenticity_token());
+        });
+    });
 }
 
 type HttpVerb = "GET" | "POST" | "DELETE" | "PUT";

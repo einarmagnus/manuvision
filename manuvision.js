@@ -1,15 +1,11 @@
 "use strict";
 let csrfToken;
 async function csrf() {
-    if (csrfToken === undefined) {
-        const mainPage = await (await fetch("/")).text();
-        const csrf = /csrfToken&quot;:&quot;([^&]+)/.exec(mainPage);
-        if (csrf === null) {
-            throw new Error("Could not extract csrf-token");
-        }
-        csrfToken = csrf[1];
-    }
-    return csrfToken;
+    return new Promise(acc => {
+        require(["lib/Podio.Config"], (podioConfig) => {
+            acc(podioConfig.authenticity_token());
+        });
+    });
 }
 async function fetchJson(url, method) {
     return (await fetch(url, {
